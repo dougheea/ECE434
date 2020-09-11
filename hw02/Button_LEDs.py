@@ -4,7 +4,7 @@ import Adafruit_BBIO.GPIO as GPIO
 import time
 GPIO.setup("P9_12", GPIO.OUT)
 GPIO.setup("P9_14", GPIO.OUT)
-GPIO.setup("P9_16", GPIO.OUT)
+GPIO.setup("P9_20", GPIO.OUT)
 GPIO.setup("P9_18", GPIO.OUT)
 
 GPIO.setup("P9_11", GPIO.IN)
@@ -39,11 +39,11 @@ while(1):
     if GPIO.input("P9_15",):
         if count3 ==0:
             time.sleep(0.1)
-            GPIO.output("P9_16", GPIO.HIGH)
+            GPIO.output("P9_20", GPIO.HIGH)
             count3 +=1
         else:
             time.sleep(0.1)
-            GPIO.output("P9_16", GPIO.LOW)
+            GPIO.output("P9_20", GPIO.LOW)
             count3 -= 1
     if GPIO.input("P9_17"):
         if count4 ==0:
