@@ -14,13 +14,13 @@ GPIO.setup("P9_17", GPIO.IN)
 
 while(1):
     while(GPIO.input("P9_11")):
-        GPIO.output("P9_12")
+        GPIO.output("P9_12", GPIO.HIGH)
     while(GPIO.input("P9_13")):
-        GPIO.output("P9_14")
-    while(GPIO.input("P9_15")):
-        GPIO.output("P9_16")
+        GPIO.output("P9_14", GPIO.HIGH)
+    while(GPIO.input("P9_15",)):
+        GPIO.output("P9_16", GPIO.HIGH)
     while(GPIO.input("P9_17")):
-        GPIO.output("P9_18")
+        GPIO.output("P9_18", GPIO.HIGH)
     
 
 
