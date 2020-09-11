@@ -14,7 +14,7 @@ GPIO.setup("P9_11", GPIO.IN)
 GPIO.setup("P9_13", GPIO.IN)
 GPIO.setup("P9_15", GPIO.IN)
 GPIO.setup("P9_17", GPIO.IN)
-]#initating a count to keep track if the LED should be turned on or off
+#initating a count to keep track if the LED should be turned on or off
 count1 = 0
 count2 = 0
 count3 = 0
