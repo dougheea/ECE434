@@ -39,7 +39,7 @@ while(1):
             time.sleep(0.1)
             GPIO.output("P9_14", GPIO.LOW)
             count2 -=1
-    if GPIO.input("P9_15",):
+    if GPIO.input("P9_15"):
         if count3 ==0:
             time.sleep(0.1)
             GPIO.output("P9_16", GPIO.HIGH)
