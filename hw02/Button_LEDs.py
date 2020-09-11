@@ -12,16 +12,39 @@ GPIO.setup("P9_13", GPIO.IN)
 GPIO.setup("P9_15", GPIO.IN)
 GPIO.setup("P9_17", GPIO.IN)
 
+count1 = 0
+count2 = 0
+count3 = 0
+count4 = 0
+
 while(1):
     if GPIO.input("P9_11"):
-        GPIO.output("P9_12", GPIO.HIGH)
+        if count1 ==0:
+            GPIO.output("P9_12", GPIO.HIGH)
+            count1 += 1
+        else:
+            GPIO.output("P9_12", GPIO.LOW)
+            count1 -= 1
     if GPIO.input("P9_13"):
-        GPIO.output("P9_14", GPIO.HIGH)
+        if count2 ==0:
+            GPIO.output("P9_14", GPIO.HIGH)
+            count2 += 1
+        else:
+            GPIO.output("P9_14", GPIO.LOW)
+            count2 -=1
     if GPIO.input("P9_15",):
-        GPIO.output("P9_16", GPIO.HIGH)
+        if count3 ==0:
+            GPIO.output("P9_16", GPIO.HIGH)
+            count3 +=1
+        else:
+            GPIO.output("P9_16", GPIO.LOW)
+            count3 -= 1
     if GPIO.input("P9_17"):
-        GPIO.output("P9_18", GPIO.HIGH)
-    
-
+        if count4 ==0:
+            GPIO.output("P9_18", GPIO.HIGH)
+            count4 +=1
+        else:
+            GPIO.output("P9_18", GPIO.LOW)
+            count4 -=1
 
 GPIO.cleanup()
