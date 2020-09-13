@@ -7,10 +7,25 @@
 
 import sys
 import numpy as np
+import Adafruit_BBIO.GPIO as GPIO
+import time
+
 newcur_y = 1
 newcur_x = 1
 cur_x = 1
 cur_y =1
+
+
+
+GPIO.setup("P9_11", GPIO.IN)
+GPIO.setup("P9_13", GPIO.IN)
+GPIO.setup("P9_15", GPIO.IN)
+GPIO.setup("P9_17", GPIO.IN)
+
+GPIO.add_event_detect("P9_11", GPIO.BOTH)
+GPIO.add_event_detect("P9_13", GPIO.BOTH)
+GPIO.add_event_detect("P9_15", GPIO.BOTH)
+GPIO.add_event_detect("P9_17", GPIO.BOTH)
 
 print("Welcome to Etch-A-Sketch! To start playing simply enter the dimensions ",
     "of the board you wish to play on. Then you will be prompted which direction ",
