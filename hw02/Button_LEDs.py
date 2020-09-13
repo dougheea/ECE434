@@ -7,13 +7,13 @@ import time
 #setting up the LEDS as inputs and the buttons as outputs
 GPIO.setup("P9_12", GPIO.OUT)
 GPIO.setup("P9_14", GPIO.OUT)
-GPIO.setup("P9_16", GPIO.OUT)
+GPIO.setup("P9_24", GPIO.OUT)
 GPIO.setup("P9_18", GPIO.OUT)
 
-GPIO.setup("P9_11", GPIO.IN)
-GPIO.setup("P9_13", GPIO.IN)
-GPIO.setup("P9_15", GPIO.IN)
-GPIO.setup("P9_17", GPIO.IN)
+GPIO.setup("P9_11", GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+GPIO.setup("P9_13", GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+GPIO.setup("P9_23", GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+GPIO.setup("P9_17", GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 #initating a count to keep track if the LED should be turned on or off
 count1 = 0
 count2 = 0
@@ -39,14 +39,14 @@ while(1):
             time.sleep(0.1)
             GPIO.output("P9_14", GPIO.LOW)
             count2 -=1
-    if GPIO.input("P9_15"):
+    if GPIO.input("P9_23"):
         if count3 ==0:
             time.sleep(0.1)
-            GPIO.output("P9_16", GPIO.HIGH)
+            GPIO.output("P9_24", GPIO.HIGH)
             count3 +=1
         else:
             time.sleep(0.1)
-            GPIO.output("P9_16", GPIO.LOW)
+            GPIO.output("P9_24", GPIO.LOW)
             count3 -= 1
     if GPIO.input("P9_17"):
         if count4 ==0:
