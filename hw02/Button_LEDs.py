@@ -7,7 +7,7 @@ import time
 #setting up the LEDS as inputs and the buttons as outputs
 GPIO.setup("P9_12", GPIO.OUT)
 GPIO.setup("P9_14", GPIO.OUT)
-GPIO.setup("P9_24", GPIO.OUT)
+GPIO.setup("P9_16", GPIO.OUT)
 GPIO.setup("P9_18", GPIO.OUT)
 
 GPIO.setup("P9_11", GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
@@ -42,11 +42,11 @@ while(1):
     if GPIO.input("P9_23"):
         if count3 ==0:
             time.sleep(0.1)
-            GPIO.output("P9_24", GPIO.HIGH)
+            GPIO.output("P9_16", GPIO.HIGH)
             count3 +=1
         else:
             time.sleep(0.1)
-            GPIO.output("P9_24", GPIO.LOW)
+            GPIO.output("P9_16", GPIO.LOW)
             count3 -= 1
     if GPIO.input("P9_17"):
         if count4 ==0:
