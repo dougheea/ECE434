@@ -9,18 +9,19 @@
 5. 22.5%
 6. Here is the table with the period and processor values:
 
-|Language       |Period(ms)|%Processor | Sleep Time (s)
-|bash           |245       |22.5%      |0.1
-|bash           |66.0      |72.8%      |0.01
-|sh             |43.5      |79.2%      |0.01
-|sh             |51.6      |66.5%      |0.005
-|Python         |204       |3.3%       |0.1
-|Python         |21.2      |3.7%       |0.01
-|Python         |11.4      |15.8%      |0.005
-|C              |
-|gpiod py 1 bit |19 us    |100%
-|gpiod py 2 bit |19.5 us  |100%
-|gpiod c  1 bit |
+|Language       |Period(ms)|%Processor | Sleep Time (s)|
+| ------------- | -------- | --------- | ------------- |
+|bash           |245       |22.5%      |0.1            |
+|bash           |66.0      |72.8%      |0.01           |
+|sh             |43.5      |79.2%      |0.01           |
+|sh             |51.6      |66.5%      |0.005          |
+|Python         |204       |3.3%       |0.1            |
+|Python         |21.2      |3.7%       |0.01           |
+|Python         |11.4      |15.8%      |0.005          |
+|C              |          |           |               |
+|gpiod py 1 bit |19 us     |100%       |               |
+|gpiod py 2 bit |19.5 us   |100%       |               |
+|gpiod c  1 bit |          |           |               |
 
 
 7. it is pretty stable
