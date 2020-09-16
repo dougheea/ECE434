@@ -12,3 +12,6 @@ this .md file is where I wrote down my answers to the *Measuring a gpio pin on a
 
 ### togglegpio.py
 This program was a small script that was written to test the speed of toggling a gpio pin using python. The program was run using python3 and then an oscilloscope was used to gather data from the gpio pin.
+
+### togglegpio.c
+This is the modified gpio toggle file that uses lseek() instead of opening and closing the file every time it is modified. 
