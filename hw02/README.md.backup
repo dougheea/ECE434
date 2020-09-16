@@ -7,7 +7,7 @@ This program toggles 4 LEDs with 4 corresponding buttons. The LEDs are using GPI
 This is a modified version of etch_a_sketch.py from hw01. Instead of taking text as an input, the user can push the buttons to move the cursor. From left to right the buttons perform the following tasks: move left, move right, move up, move down, clear the board, exit the program. The terminal still prompts the user for what size board will be used. The program was run using python3.git 
 
 ### GPIO Oscilloscope Answers:
-this .md file is where I wrote down my answers to the *Measuring a gpio pin on an Oscilloscpe * and *gpiod* sections. The table is where I gathered all of the information of comparing different languages' performances. 
+this .md file is where I wrote down my answers to the *Measuring a gpio pin on an Oscilloscpe* and *gpiod* sections. The table is where I gathered all of the information of comparing different languages' performances. 
 
 
 ### togglegpio.py
