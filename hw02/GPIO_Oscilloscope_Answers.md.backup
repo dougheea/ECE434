@@ -17,11 +17,12 @@
 |sh             |51.6      |66.5%      |0.005          |
 |Python         |204       |3.3%       |0.1            |
 |Python         |21.2      |3.7%       |0.01           |
-|Python         |11.4      |15.8%      |0.005          |
-|C              |          |           |               |
-|gpiod py 1 bit |19 us     |100%       |               |
-|gpiod py 2 bit |19.5 us   |100%       |               |
-|gpiod c  1 bit |          |           |               |
+|Python         |11.4      |4.0%       |0.005          |
+|C              |310us     |26.4%      |N/A         |
+|gpiod py 1 bit |19 us     |100%       |N/A            |
+|gpiod py 2 bit |19.5 us   |100%       |N/A            |
+|gpiod c  1 bit |2us       |100%       |N/A            |
+|gpiod c  2 bit |1us       |100%       |N/A  |
 
 
 7. it is pretty stable
@@ -43,9 +44,15 @@
 9. shortest period I could get: 11.4ms
 
 ### C
-1. min:
-   max:
-2. 
+Using C to toggle was quite a lot bit faster than python. It used slightly more of the CPU, but went from 11.4ms to 310us.
+1. min: 63mV  Max:3.375V
+2. 310us
+3. a lot smaller
+4. Using C to toggle with an lseek makes the process very quick
+5. 26.4%
+6. See table above
+7. the period is pretty stable
+
 
 
 ### gpiod
