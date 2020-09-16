@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-#chmod +x etch_a_sketch.py
+#chmod +x etch_a_sketch_buttons_inputs.py
 #Author: Emily Dougherty
 #This is a program for an etch a sketch gamein which the user inputs
 #the size of the board and controls where 'X's are drawn. the board 

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-#chmod +x etch_a_sketch.py
+#chmod +x Button_LEDS.py
 
 
 import Adafruit_BBIO.GPIO as GPIO
