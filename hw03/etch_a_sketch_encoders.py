@@ -2,7 +2,7 @@
 #chmod +x etch_a_sketch_LED_matrix.py
 #Author: Emily Dougherty
 # This is a program for an etch a sketch game in which the user 
-# controls what part of the board lights up. The board 
+# controls what part of the board lights up by turning the encoder knobs. The board 
 # can be 'shaken' at any time by pressing the clear button. There is also
 # a button to exit the game.
 
@@ -11,6 +11,16 @@ import numpy as np
 import Adafruit_BBIO.GPIO as GPIO
 import time
 import smbus
+from Adafruit_BBIO.Encoder import RotaryEncoder, eQEP1
+from Adafruit_BBIO.Encoder import RotaryEncoder, eQEP2
+
+Encoder1 = RotaryEncoder(eQEP1)
+Encoder1.setAbsolute()
+Encoder1.enable()
+
+Encoder2 = RotaryEncoder(eQEP2)
+Encoder2.setAbsolute()
+Encoder2.enable()
 
 bus = smbus.SMBus(2)  # Use i2c bus 1
 matrix = 0x70         # Use address 0x70
@@ -20,19 +30,13 @@ newcur_x = 0
 cur_x = 0
 cur_y =1
 
+cur_enc1 = Encoder1.position #used for left/right
+cur_enc2 = Encoder2.position #used for up/down
 
 #setting up the GPIO pins that the buttons are using
-GPIO.setup("P9_11", GPIO.IN) #left
-GPIO.setup("P9_13", GPIO.IN) #right
-GPIO.setup("P9_23", GPIO.IN) #up 
-GPIO.setup("P9_17", GPIO.IN) #down
 GPIO.setup("P9_27", GPIO.IN) #clear
 GPIO.setup("P9_24", GPIO.IN) #exit
 #initilizing button events
-GPIO.add_event_detect("P9_11", GPIO.FALLING)
-GPIO.add_event_detect("P9_13", GPIO.FALLING)
-GPIO.add_event_detect("P9_23", GPIO.FALLING)
-GPIO.add_event_detect("P9_17", GPIO.FALLING)
 GPIO.add_event_detect("P9_27", GPIO.FALLING)
 GPIO.add_event_detect("P9_24", GPIO.FALLING)
 
@@ -63,7 +67,8 @@ while(1):
 
     if temp == 1:
         
-        if GPIO.event_detected("P9_11"): #each button has their own specific event
+        if cur_enc1<Encoder1.position: #each button has their own specific event
+            cur_enc1=Encoder1.position #update encoder position
             if cur_x == 0: #edge detection & correction
                 newcur_x = x-1
             else:
@@ -75,9 +80,12 @@ while(1):
             lightboard[2*cur_x]=lightboard[2*cur_x] | (1<<(8-cur_y)) #uses bit shiftingto find the right row to light up
             bus.write_i2c_block_data(matrix, 0, lightboard) #lights up the designated LED green
             print("moving left!")
+            
+            
 
                 
-        elif GPIO.event_detected("P9_13"): #the next three events foloow the same pattern as above
+        elif cur_enc1>Encoder1.position: #the next three events foloow the same pattern as above
+            cur_enc1=Encoder1.position
             if cur_x == x-1:
                 newcur_x = 0
             else:
@@ -89,9 +97,11 @@ while(1):
             lightboard[2*cur_x]=lightboard[2*cur_x] | (1<<(8-cur_y))    
             bus.write_i2c_block_data(matrix, 0, lightboard)
             print("moving right!")
+           
 
                 
-        elif GPIO.event_detected("P9_23"):
+        elif cur_enc2>Encoder2.position:
+            cur_enc2=Encoder2.position
             if cur_y == 1:
                 newcur_y = y-1
             else:
@@ -104,7 +114,8 @@ while(1):
             print("moving up!")
 
                 
-        elif GPIO.event_detected("P9_17"):
+        elif cur_enc2<Encoder2.position:
+            cur_enc2=Encoder2.position
             if cur_y == y-1:
                 newcur_y = 1
             else:
@@ -127,6 +138,7 @@ while(1):
         
         elif GPIO.event_detected("P9_24"): #exit button
             break
+        time.sleep(0.5)
 
     
     
