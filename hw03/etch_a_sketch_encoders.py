@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-#chmod +x etch_a_sketch_LED_matrix.py
+#chmod +x etch_a_sketch_encoders.py
 #Author: Emily Dougherty
 # This is a program for an etch a sketch game in which the user 
 # controls what part of the board lights up by turning the encoder knobs. The board 
