@@ -15,3 +15,21 @@ This program was a small script that was written to test the speed of toggling a
 
 ### togglegpio.c
 This is the modified gpio toggle file that uses lseek() instead of opening and closing the file every time it is modified. 
+
+# hw02 grading
+
+| Points      | Description |
+| ----------- | ----------- |
+|  2 | Buttons and LEDs 
+|  7 | Etch-a-Sketch works
+|    | Measuring a gpio pin on an Oscilloscope 
+|  4 | Questions answered
+|  2 | Table complete
+|  2 | gpiod
+|    | Security     *missing*
+|  0 | ssh port
+|  0 | iptables
+|  0 | fail2ban
+| 17 | **Total**
+
+Tables are well done!
