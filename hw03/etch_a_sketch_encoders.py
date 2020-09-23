@@ -138,7 +138,7 @@ while(1):
         
         elif GPIO.event_detected("P9_24"): #exit button
             break
-        time.sleep(0.5)
+        time.sleep(0.2)
 
     
     
