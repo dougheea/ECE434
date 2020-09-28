@@ -1,5 +1,21 @@
+# hw03 grading
+
+| Points      | Description |
+| ----------- | ----------- |
+|  5 | TMP101 
+|  3 |   | setup.sh
+|  2 |   | Documentation | *Well done*
+|  5 | Etch-a-Sketch
+|  3 |   | setup.sh
+|  2 |   | Documentation
+| 20 | **Total**
+
+*My comments are in italics. --may*
+
 ### Setup.sh
 This file should be run before anything else in this folder. This file configures the eQEP pins and it sets the values used in the temperature sensor program.
+
+*What temp is 0x14?*
 
 ### Etch_a_sketch_encoders.py
 This program uses encoders instead of buttons to move the cursor around the LED Matrix. Like the LED_Matrix file, the exercises/displays/matrix8x8 program to set up the matrix must be run prior to running my program. 
