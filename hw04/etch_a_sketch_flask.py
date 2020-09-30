@@ -18,8 +18,7 @@ matrix = 0x70         # Use address 0x70
 print("Welcome to Etch-A-Sketch! To start playing simply enter the dimensions ",
     "of the board you wish to play on. Then you will be prompted which direction ",
     "you would like to move in by using the buttons. The | shows where you currently",
-    "are. You can clear the board by pressing the clear button. If at any ",
-    "point you wish to leave the game simply type 'exit'. Enjoy! \n")
+    "are. You can clear the board by pressing the clear button. Enjoy! \n")
 
 x =8
 y =9
