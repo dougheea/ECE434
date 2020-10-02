@@ -1,0 +1,3 @@
+### Makefile
+The makefile is used to compile the app.c script. Makefile can be run from the command line by typing 'make'. The script will compile the script, build the executable, and print a successful message if everything went smoothly. The executable that can then be run is 'app.arm'. You can also see the compiler used by typing 'make test'.
+
