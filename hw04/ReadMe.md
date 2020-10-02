@@ -1,3 +1,17 @@
+# hw04 grading
+
+| Points      | Description |
+| ----------- | ----------- |
+|  2 | Memory map 
+|  4 | mmap()
+|  4 | i2c via Kernel
+|  4 | Etch-a-Sketch via flask
+|  4 | LCD display
+|  2 | Extras  *nice pictures*
+| 20 | **Total**
+
+*My comments are in italics. --may*
+
 ### Images
 The images depict the use of the LCD screen portion of the homework. I also added the pdf file containing my memory map for the beagleboard
 
