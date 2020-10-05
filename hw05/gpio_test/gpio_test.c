@@ -16,7 +16,7 @@
 #include <linux/interrupt.h>            // Required for the IRQ code
 
 MODULE_LICENSE("GPL");
-MODULE_AUTHOR("Derek Molloy");
+MODULE_AUTHOR("Derek Molloy"); //edited by Emily Dougherty
 MODULE_DESCRIPTION("A Button/LED test driver for the BBB");
 MODULE_VERSION("0.1");
 
