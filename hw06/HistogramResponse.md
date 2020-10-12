@@ -1,0 +1,1 @@
+The RT kernel seems to still have a bounded latency, but it is still faster than the vanilla kernel. For the load I was compiling a time intensive makefile repeatedly until the hist.gen program was finished. 
