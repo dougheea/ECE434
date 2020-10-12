@@ -1,7 +1,7 @@
-### Cyclictest.png
+### CyclictestHeavyLoad.png
 This is the image generated of the histogram plot of a heavy load running on the rt kernel and the regular kernel.
 
-### noLoad.png
+### cyclictestNoLoad.png
 This is the image generated of the histogram plot of no load running on the rt kernel and the regular kernel.
 
 ### HistogramResponse.md
