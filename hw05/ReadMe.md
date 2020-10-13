@@ -1,3 +1,17 @@
+# hw05 grading
+
+| Points      | Description |
+| ----------- | ----------- |
+|  2 | Project - *LED wreath - Nice idea*
+|  2 | Makefile
+|  4 | Kernel Source
+|  2 | Cross-Compiling
+|  8 | Kernel Modules: hello, ebbchar, gpio_test, led
+|  2 | Extras
+| 20 | **Total**
+
+*My comments are in italics. --may*
+
 ### Makefile
 The makefile is used to compile the app.c script. Makefile can be run from the command line by typing 'make'. The script will compile the script, build the executable, and print a successful message if everything went smoothly. The executable that can then be run is 'app.arm'. You can also see the compiler used by typing 'make test'.
 
@@ -9,3 +23,5 @@ This folder contains led.c and a makefile. The overall goal of these files is to
 
 ### hw05images pdf
 This pdf contains all the images collected from completing other parts of the homework. These images include completing: swapping kernels, cross compiling and completing the different kernel modules.
+
+*Nice documentation*
