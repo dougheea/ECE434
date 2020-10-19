@@ -8,4 +8,4 @@ This file uses Blynk to turn on the usr3 LED. It also can blink a virtual LED on
 This file uses Blynk to accomplish everything in leds.py and also reads a tmp101 sensor. The temperature will print out whenever a change occurs.
 
 ### etch_a_sketch_blynk
-This file takes the etch a sketch program from earlier in the quarter and uses blink to light up the board. The setup.sh file must be sourced before use.
+This file takes the etch a sketch program from earlier in the quarter and uses blink to light 
