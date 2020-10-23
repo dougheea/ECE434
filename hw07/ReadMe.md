@@ -1,3 +1,16 @@
+# hw07 grading
+
+| Points      | Description |
+| ----------- | ----------- |
+|  2 | Project Template
+|  2 | | Names
+|  0 | | Executive Summary - *missing*
+| 10 | Blynk - TMP101
+|  4 | Blynk - Etch-a-sketch - extra
+| 18 | **Total**
+
+*My comments are in italics. --may*
+
 ### setup.sh
 This file is used in the Blynk files. It's primary purpose is to set the authorization key. Note: before running it, make sure to source this file, otherwise the Blynk app will not pick it up.
 
