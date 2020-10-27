@@ -106,4 +106,4 @@ def action(deviceName, action): #this is the action from the web browser
     
         
 if __name__ == "__main__":
-   app.run(host='0.0.0.0', port=8081, debug=True) 
+        app.run(debug=True, port=8081, host='0.0.0.0')
