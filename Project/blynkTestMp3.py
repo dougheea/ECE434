@@ -7,7 +7,7 @@ import logging
 import threading
 import time
 
-# Get the autherization code (See setup.sh)
+# Get the authorization code (See setup.sh)
 BLYNK_AUTH = os.getenv('BLYNK_AUTH')
 
 # Initialize Blynk
