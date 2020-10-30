@@ -1,3 +1,18 @@
+# hw08 grading
+
+| Points      | Description |
+| ----------- | ----------- |
+| 14 | PRU
+|  2 | Controlling the PWM Frequency - optional
+|  2 | Reading an Input at Regular Intervals - optional
+|  2 | Analog Wave Generator - optional
+| 20 | **Total**
+
+*My comments are in italics. --may*
+
+*Well done, very complete*
+
+
 ### hello.pru.c
 This can be run with the command: make TARGET=hello.pru. This file is for 2.6 of the homework. More details can be found in the PRUAnswers.md file.
 
