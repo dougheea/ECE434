@@ -11,6 +11,7 @@ import blynklib
 import blynktimer
 import sys
 import os
+from subprocess import Popen
 
 # Get the authorization code (See setup.sh)
 BLYNK_AUTH = os.getenv('BLYNK_AUTH')
@@ -28,8 +29,14 @@ class thread_with_exception(threading.Thread):
         # target function of the thread class 
         try: 
             print("playing song")
-            os.system("mplayer -ao alsa:device=sysdefault=Set hozier.mp3")
-            # while True: 
+            #while True: 
+               # os.system("mplayer -ao alsa:device=sysdefault=Set hozier.mp3")
+                
+            proc = Popen(['mplayer', '-ao', 'alsa:device=sysdefault=Set', 'hozier.mp3'])
+            #time.sleep(8)
+                #proc.kill()
+                #proc.kill()
+
             #     # print('running ' + self.name)
             #     print("Playing Mariah Carey's 'All I Want For Christmas is You'")
 
@@ -46,7 +53,8 @@ class thread_with_exception(threading.Thread):
                 return id
    
     def raise_exception(self): 
-        thread_id = self.get_id() 
+        thread_id = self.get_id()
+        proc.kill()
         res = ctypes.pythonapi.PyThreadState_SetAsyncExc(thread_id, 
               ctypes.py_object(SystemExit)) 
         if res > 1: 
@@ -61,8 +69,9 @@ def song1(pin, value):
     
     t1 = thread_with_exception('Thread 1')
     t1.start()
-    time.sleep(5) 
+    time.sleep(15) 
     t1.raise_exception() 
+    #ti.kill()
     t1.join() 
     
     # print("Playing Mariah Carey's 'All I Want For Christmas is You'")
