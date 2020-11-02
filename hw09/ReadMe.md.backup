@@ -1,2 +1,5 @@
 ### temp_logger.py
 This file takes the temperature of the room from 2 different tmp101 sensors and logs them to a google sheet: https://docs.google.com/spreadsheets/d/1nytQJZmAPP3sAD1jyL4Ix__gswq_vsJ2V9dkHYUuOXI/edit#gid=0. The data is then plotted onto the graph in the google sheet. The credentials.json file is used to authenticate the user and allow them to edit the sheet. The images of the data and plot I tested with can be see in tempData.pdf.
+
+### temp.py
+This file takes the temperature from the 2 sensors and plots them on ThingSpeak. A setup files is used to set the temp sensors and to set the Key
