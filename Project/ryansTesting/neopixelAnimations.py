@@ -205,6 +205,28 @@ def off():
     fo.write("-1 0 0 0\n".encode("utf-8"));
     sleep(0.1)
 
+
+def half_n_half():
+    global fo 
+    global len
+
+    for k in range (0, len):
+        if k > (len/2):
+            r = 0xf0
+            g = 0x00
+            b = 0x00
+        else:
+            r = 0x00
+            g = 0xf0
+            b = 0x00
+
+        fo.write("%d %d %d %d\n".encode("utf-8") % (k, r, g, b))
+
+    fo.write("-1 0 0 0\n".encode("utf-8"))
+    
+
+        
+
 # Main is below
 
 # Open a file
