@@ -2,11 +2,11 @@
 
 | Points      | Description |
 | ----------- | ----------- |
-|  0 | Project Timeline - *mising*
+|  5 | Project Timeline - *missing... found it*
 | 10 | Logging to Sheets
 |  3 | Logging to ThingSpeak - optional
-|  2 | Extras
-| 15 | **Total**
+|  0 | Extras       *No pointer to eLinux page*
+| 18 | **Total**
 
 *My comments are in italics. --may*
 
