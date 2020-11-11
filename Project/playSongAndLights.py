@@ -23,6 +23,9 @@ global threadCheck
 threadCheck = False
 off = 0
 
+global maxBrightness
+maxBrightness = 100
+
 fo = open("/dev/rpmsg_pru30", "wb", 0)  # Write binary unbuffered
 
 @blynk.handle_event('write V0')
@@ -225,25 +228,70 @@ def helperFunction4():
 #pulse_wave()
 #randomLED()
 #half_n_half():
+#red_add_forward()
+#red_add_backward()
 
 
 len = 240
 
+def red_add_forward():
+    global fo
+    global len
+    global maxBrightness
+    
+    for k in range(0, len):
+        for i in range(0, len):
+            if(i <= k):
+                r = maxBrightness
+                g = 0x00
+                b = 0x00
+            else:
+                r = 0x00
+                g = 0x00
+                b = 0x00
+            
+            fo.write("%d %d %d %d\n".encode("utf-8") % (i, r, g, b))
+        
+        fo.write("-1 0 0 0\n".encode("utf-8"));
+        sleep(0.01)
+        
+def red_add_backward():
+    global fo
+    global len
+    global maxBrightness
+    
+    for k in range(0, len):
+        for i in range(0, len):
+            if(i >= k):
+                r = maxBrightness
+                g = 0x00
+                b = 0x00
+            else:
+                r = 0x00
+                g = 0x00
+                b = 0x00
+            
+            fo.write("%d %d %d %d\n".encode("utf-8") % (i, r, g, b))
+        
+        fo.write("-1 0 0 0\n".encode("utf-8"));
+        sleep(0.01)
+
 def red_green_blink():
     global fo
     global len
+    global maxBrightness
     phase = 0
     
     for k in range(0, 10):
         if (phase%2) == 0:
             for i in range(0, len):
                 if (i%2) == 0:
-                    r = 0xf0
+                    r = maxBrightness
                     g = 0x00
                     b = 0x00
                 else:
                     r = 0x00
-                    g = 0xf0
+                    g = maxBrightness
                     b = 0x00
                 
                 fo.write("%d %d %d %d\n".encode("utf-8") % (i, r, g, b))
@@ -251,10 +299,10 @@ def red_green_blink():
             for i in range(0, len):
                 if (i%2) == 0:
                     r = 0x00
-                    g = 0xf0
+                    g = maxBrightness
                     b = 0x00
                 else:
-                    r = 0xf0
+                    r = maxBrightness
                     g = 0x00
                     b = 0x00
                 
@@ -267,11 +315,12 @@ def red_green_blink():
 def red_run_forward():
     global fo
     global len
+    global maxBrightness
     
-    for k in range(0, 20):
+    for k in range(0, len):
         for i in range(0, len):
             if(i == k):
-                r = 0xf0
+                r = maxBrightness
                 g = 0x00
                 b = 0x00
             else:
@@ -287,11 +336,12 @@ def red_run_forward():
 def red_run_backward():
     global fo
     global len
+    global maxBrightness
     
-    for k in range(20, 0, -1):
+    for k in range(len, 0, -1):
         for i in range(0, len):
             if(i == k):
-                r = 0xf0
+                r = maxBrightness
                 g = 0x00
                 b = 0x00
             else:
@@ -308,18 +358,19 @@ def red_run_backward():
 def red_green_run():
     global fo
     global len
+    global maxBrightness
 
-    run_length = 40     #determines how far down the string the red and green will run
+    run_length = len     #determines how far down the string the red and green will run
     
     for k in range(0, run_length, 1):
         for i in range(0, len):
             if(i == k):
-                r = 0xf0
+                r = maxBrightness
                 g = 0x00
                 b = 0x00
             elif(i == (run_length-k)):
                 r = 0x00
-                g = 0xf0
+                g = maxBrightness
                 b = 0x00
             else:
                 r = 0x00
@@ -334,12 +385,12 @@ def red_green_run():
     for k in range(run_length, 0, -1):
         for i in range(0, len):
             if(i == k):
-                r = 0xf0
+                r = maxBrightness
                 g = 0x00
                 b = 0x00
             elif(i == (run_length-k)):
                 r = 0x00
-                g = 0xf0
+                g = maxBrightness
                 b = 0x00
             else:
                 r = 0x00
@@ -354,17 +405,18 @@ def red_green_run():
 def pulse_red():
     global fo 
     global len
+    global maxBrightness
     
     g = 0x00
     b = 0x00
     
-    for k in range(0, 200):
+    for k in range(0, maxBrightness):
         for i in range(0, len):
             fo.write("%d %d %d %d\n".encode("utf-8") % (i, k, g, b))
         fo.write("-1 0 0 0\n".encode("utf-8"));
         sleep(0.005)
     
-    for k in range(200, 0, -1):
+    for k in range(maxBrightness, 0, -1):
         for i in range(0, len):
             fo.write("%d %d %d %d\n".encode("utf-8") % (i, k, g, b))
         fo.write("-1 0 0 0\n".encode("utf-8"));
@@ -374,6 +426,7 @@ def pulse_red():
 def pulse_wave():
     global fo 
     global len
+    global maxBrightness
     
     amp = 12
     f = 44
@@ -393,16 +446,17 @@ def pulse_wave():
 def randomLED():
     global fo
     global len
+    global maxBrightness
     
     for k in range(0, len):
         ledNum = random.randrange(len)
         if(ledNum%2 == 0):
-            r = 0xf0
+            r = maxBrightness
             g = 0x00
             b = 0x00
         else:
             r = 0x00
-            g = 0xf0
+            g = maxBrightness
             b = 0x00
         
         fo.write("%d %d %d %d\n".encode("utf-8") % (ledNum, r, g, b))
@@ -412,15 +466,16 @@ def randomLED():
 def half_n_half():
     global fo 
     global len
+    global maxBrightness
 
     for k in range (0, len):
         if k > (len/2):
-            r = 0xf0
+            r = maxBrightness
             g = 0x00
             b = 0x00
         else:
             r = 0x00
-            g = 0xf0
+            g = maxBrightness
             b = 0x00
 
         fo.write("%d %d %d %d\n".encode("utf-8") % (k, r, g, b))
@@ -430,6 +485,8 @@ def half_n_half():
 def Lightsoff():
     global fo
     global len
+    global maxBrightness
+
     
     for k in range(0, len):
         fo.write("%d %d %d %d\n".encode("utf-8") % (k, 0, 0, 0))
