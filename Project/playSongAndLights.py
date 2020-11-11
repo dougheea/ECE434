@@ -18,51 +18,216 @@ BLYNK_AUTH = os.getenv('BLYNK_AUTH')
 # Initialize Blynk
 blynk = blynklib.Blynk(BLYNK_AUTH)
 global off
+global song
+global threadCheck
+threadCheck = False
 off = 0
 
 fo = open("/dev/rpmsg_pru30", "wb", 0)  # Write binary unbuffered
 
 @blynk.handle_event('write V0')
 def song1(pin, value):
-    songThread = threading.Thread(target = helperFunction)
-    songThread.start()
-    print("after thread started")
+    global song
+    global threadCheck
+    if(threadCheck == False):
+        threadCheck = True
+        song = "AllIWantForChristmas.mp3"
+        songThread = threading.Thread(target = helperFunction1)
+        songThread.start()
+        print("after thread started song 1")
+    else:
+        print("already playing a thing!")
 
-
+@blynk.handle_event('write V2')
+def song2(pin, value):
+    global song
+    global threadCheck
+    if(threadCheck == False):
+        threadCheck = True
+        song = "NSYNC.mp3"
+        songThread = threading.Thread(target = helperFunction2)
+        songThread.start()
+        print("after thread started song 2")
+    
+@blynk.handle_event('write V3')
+def song3(pin, value):
+    global song
+    global threadCheck
+    if(threadCheck==False):
+        threadCheck = True
+        song = "SleighRide.mp3"
+        songThread = threading.Thread(target = helperFunction3)
+        songThread.start()
+        print("after thread started song 3")
+    else:
+        print("already playing a thing!")
+    
+@blynk.handle_event('write V4')
+def song4(pin, value):
+    global song
+    global threadCheck
+    if(threadCheck==False):
+        threadCheck = True
+        song = "CarolOfTheBells.mp3"
+        songThread = threading.Thread(target = helperFunction4)
+        songThread.start()
+        print("after thread started song 4")
+    else:
+        print("already playing a thing!")
+    
 @blynk.handle_event('write V1')
 def stop(pin, value):
     global off
+    #threadCheck = False
     print("in the STOP")
     off = 1
-
     
-def helperFunction():
+#All I want for christmas
+def helperFunction1():
     global off
-    player = subprocess.Popen(["mplayer", "-quiet", "AllIWantForChristmas.mp3"], stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    global song
+    global threadCheck
+    player = subprocess.Popen(["mplayer", "-quiet", song], stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     print(off)
     time.sleep(4)
     while(off == 0):
         red_green_blink()
+        if(off == 1){
+            break
+        }
+        red_green_blink()
+        if(off == 1){
+            break
+        }
+        red_run_forward()
+        if(off == 1){
+            break
+        }
         red_run_backward()
+        if(off == 1){
+            break
+        }
         pulse_wave()
+        if(off == 1){
+            break
+        }
         randomLED()
     player.communicate(b"q")
     off = 0
     Lightsoff()
+    threadCheck = False
     print("everything DONE")
     
-
+  
+ #NSYNC   
+def helperFunction2():
+    global off
+    global song
+    global threadCheck
+    player = subprocess.Popen(["mplayer", "-quiet", song], stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    print(off)
+    time.sleep(4)
+    while(off == 0):
+        half_n_half()
+        if(off == 1){
+            break
+        }
+        sleep(3)
+        pulse_red()
+        if(off == 1){
+            break
+        }
+        pulse_wave()
+        if(off == 1){
+            break
+        }
+        red_green_blink()
+        if(off == 1){
+            break
+        }
+        red_green_run() 
+        if(off == 1){
+            break
+        }
+    player.communicate(b"q")
+    off = 0
+    Lightsoff()
+    threadCheck = False
+    print("everything DONE")
+   
+ #Sliegh ride   
+def helperFunction3():
+    global off
+    global song
+    global threadCheck
+    player = subprocess.Popen(["mplayer", "-quiet", song], stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    print(off)
+    time.sleep(4)
+    while(off == 0):
+        red_green_blink()
+        if(off == 1){
+            break
+        }
+        red_run_backward()
+        if(off == 1){
+            break
+        }
+        pulse_wave()
+        if(off == 1){
+            break
+        }
+        randomLED()
+    player.communicate(b"q")
+    off = 0
+    Lightsoff()
+    threadCheck = False
+    print("everything DONE")
+    
+#Carol of the bells    
+def helperFunction4():
+    global off
+    global song
+    global threadCheck
+    player = subprocess.Popen(["mplayer", "-quiet", song], stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    print(off)
+    time.sleep(4)
+    while(off == 0):
+        red_green_blink()
+        if(off == 1){
+            break
+        }
+        red_green_blink()
+        if(off == 1){
+            break
+        }
+        red_run_forward()
+        if(off == 1){
+            break
+        }
+        red_run_backward()
+        if(off == 1){
+            break
+        }
+        randomLED()
+        
+    player.communicate(b"q")
+    off = 0
+    Lightsoff()
+    threadCheck = False
+    print("everything DONE")
+    
 #The Light Animations:
 #red_green_blink()
 #red_run_forward()
-#red_run_backward():
+#red_run_backward()
 #red_green_run()    
 #pulse_red()
 #pulse_wave()
 #randomLED()
+#half_n_half():
 
 
-len = 40
+len = 240
 
 def red_green_blink():
     global fo
@@ -244,6 +409,23 @@ def randomLED():
         fo.write("-1 0 0 0\n".encode("utf-8"));
         sleep(0.1)
 
+def half_n_half():
+    global fo 
+    global len
+
+    for k in range (0, len):
+        if k > (len/2):
+            r = 0xf0
+            g = 0x00
+            b = 0x00
+        else:
+            r = 0x00
+            g = 0xf0
+            b = 0x00
+
+        fo.write("%d %d %d %d\n".encode("utf-8") % (k, r, g, b))
+
+    fo.write("-1 0 0 0\n".encode("utf-8"))
 
 def Lightsoff():
     global fo
