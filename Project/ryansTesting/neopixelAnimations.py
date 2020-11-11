@@ -12,7 +12,7 @@ from time import sleep
 import math
 import random
 
-len = 40
+len = 240
 
 def red_green_blink():
     global fo
@@ -23,12 +23,12 @@ def red_green_blink():
         if (phase%2) == 0:
             for i in range(0, len):
                 if (i%2) == 0:
-                    r = 0xf0
+                    r = 100
                     g = 0x00
                     b = 0x00
                 else:
                     r = 0x00
-                    g = 0xf0
+                    g = 100
                     b = 0x00
                 
                 fo.write("%d %d %d %d\n".encode("utf-8") % (i, r, g, b))
@@ -36,10 +36,10 @@ def red_green_blink():
             for i in range(0, len):
                 if (i%2) == 0:
                     r = 0x00
-                    g = 0xf0
+                    g = 100
                     b = 0x00
                 else:
-                    r = 0xf0
+                    r = 100
                     g = 0x00
                     b = 0x00
                 
@@ -53,10 +53,30 @@ def red_run_forward():
     global fo
     global len
     
-    for k in range(0, 20):
+    for k in range(0, len):
         for i in range(0, len):
             if(i == k):
-                r = 0xf0
+                r = 100
+                g = 0x00
+                b = 0x00
+            else:
+                r = 0x00
+                g = 0x00
+                b = 0x00
+            
+            fo.write("%d %d %d %d\n".encode("utf-8") % (i, r, g, b))
+        
+        fo.write("-1 0 0 0\n".encode("utf-8"));
+        sleep(0.01)
+        
+def red_add_forward():
+    global fo
+    global len
+    
+    for k in range(0, len):
+        for i in range(0, len):
+            if(i <= k):
+                r = 100
                 g = 0x00
                 b = 0x00
             else:
@@ -73,10 +93,30 @@ def red_run_backward():
     global fo
     global len
     
-    for k in range(20, 0, -1):
+    for k in range(len, 0, -1):
         for i in range(0, len):
             if(i == k):
-                r = 0xf0
+                r = 100
+                g = 0x00
+                b = 0x00
+            else:
+                r = 0x00
+                g = 0x00
+                b = 0x00
+            
+            fo.write("%d %d %d %d\n".encode("utf-8") % (i, r, g, b))
+        
+        fo.write("-1 0 0 0\n".encode("utf-8"));
+        sleep(0.01)
+        
+def red_add_backward():
+    global fo
+    global len
+    
+    for k in range(0, len):
+        for i in range(0, len):
+            if(i >= k):
+                r = 100
                 g = 0x00
                 b = 0x00
             else:
@@ -94,17 +134,17 @@ def red_green_run():
     global fo
     global len
 
-    run_length = 40     #determines how far down the string the red and green will run
+    run_length = len     #determines how far down the string the red and green will run
     
     for k in range(0, run_length, 1):
         for i in range(0, len):
             if(i == k):
-                r = 0xf0
+                r = 100
                 g = 0x00
                 b = 0x00
             elif(i == (run_length-k)):
                 r = 0x00
-                g = 0xf0
+                g = 100
                 b = 0x00
             else:
                 r = 0x00
@@ -119,12 +159,12 @@ def red_green_run():
     for k in range(run_length, 0, -1):
         for i in range(0, len):
             if(i == k):
-                r = 0xf0
+                r = 100
                 g = 0x00
                 b = 0x00
             elif(i == (run_length-k)):
                 r = 0x00
-                g = 0xf0
+                g = 100
                 b = 0x00
             else:
                 r = 0x00
@@ -143,13 +183,13 @@ def pulse_red():
     g = 0x00
     b = 0x00
     
-    for k in range(0, 200):
+    for k in range(0, 100):
         for i in range(0, len):
             fo.write("%d %d %d %d\n".encode("utf-8") % (i, k, g, b))
         fo.write("-1 0 0 0\n".encode("utf-8"));
         sleep(0.005)
     
-    for k in range(200, 0, -1):
+    for k in range(100, 0, -1):
         for i in range(0, len):
             fo.write("%d %d %d %d\n".encode("utf-8") % (i, k, g, b))
         fo.write("-1 0 0 0\n".encode("utf-8"));
@@ -182,12 +222,12 @@ def randomLED():
     for k in range(0, len):
         ledNum = random.randrange(len)
         if(ledNum%2 == 0):
-            r = 0xf0
+            r = 100
             g = 0x00
             b = 0x00
         else:
             r = 0x00
-            g = 0xf0
+            g = 100
             b = 0x00
         
         fo.write("%d %d %d %d\n".encode("utf-8") % (ledNum, r, g, b))
@@ -212,12 +252,12 @@ def half_n_half():
 
     for k in range (0, len):
         if k > (len/2):
-            r = 0xf0
+            r = 100
             g = 0x00
             b = 0x00
         else:
             r = 0x00
-            g = 0xf0
+            g = 100
             b = 0x00
 
         fo.write("%d %d %d %d\n".encode("utf-8") % (k, r, g, b))
@@ -239,8 +279,11 @@ while(True):
     # red_green_run()
     # pulse_red()
     # pulse_wave()
-    randomLED()
-    off()
+    # randomLED()
+    # red_add_forward()
+    # red_add_backward()
+    half_n_half()
+    # off()
     
 # Close opened file
 fo.close()

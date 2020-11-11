@@ -11,7 +11,7 @@
 from time import sleep
 import math
 
-len = 40
+len = 240
 amp = 12
 f = 44
 shift = 3
