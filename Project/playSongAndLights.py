@@ -95,25 +95,20 @@ def helperFunction1():
     time.sleep(4)
     while(off == 0):
         red_green_blink()
-        if(off == 1){
+        if(off == 1):
             break
-        }
         red_green_blink()
-        if(off == 1){
+        if(off == 1):
             break
-        }
         red_run_forward()
-        if(off == 1){
+        if(off == 1):
             break
-        }
         red_run_backward()
-        if(off == 1){
+        if(off == 1):
             break
-        }
         pulse_wave()
-        if(off == 1){
+        if(off == 1):
             break
-        }
         randomLED()
     player.communicate(b"q")
     off = 0
@@ -132,26 +127,21 @@ def helperFunction2():
     time.sleep(4)
     while(off == 0):
         half_n_half()
-        if(off == 1){
+        if(off == 1):
             break
-        }
         sleep(3)
         pulse_red()
-        if(off == 1){
+        if(off == 1):
             break
-        }
         pulse_wave()
-        if(off == 1){
+        if(off == 1):
             break
-        }
         red_green_blink()
-        if(off == 1){
+        if(off == 1):
             break
-        }
         red_green_run() 
-        if(off == 1){
+        if(off == 1):
             break
-        }
     player.communicate(b"q")
     off = 0
     Lightsoff()
@@ -168,17 +158,14 @@ def helperFunction3():
     time.sleep(4)
     while(off == 0):
         red_green_blink()
-        if(off == 1){
+        if(off == 1):
             break
-        }
         red_run_backward()
-        if(off == 1){
+        if(off == 1):
             break
-        }
         pulse_wave()
-        if(off == 1){
+        if(off == 1):
             break
-        }
         randomLED()
     player.communicate(b"q")
     off = 0
@@ -196,21 +183,17 @@ def helperFunction4():
     time.sleep(4)
     while(off == 0):
         red_green_blink()
-        if(off == 1){
+        if(off == 1):
             break
-        }
         red_green_blink()
-        if(off == 1){
+        if(off == 1):
             break
-        }
         red_run_forward()
-        if(off == 1){
+        if(off == 1):
             break
-        }
         red_run_backward()
-        if(off == 1){
+        if(off == 1):
             break
-        }
         randomLED()
         
     player.communicate(b"q")
