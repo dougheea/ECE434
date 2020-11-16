@@ -274,15 +274,15 @@ fo = open("/dev/rpmsg_pru30", "wb", 0)  # Write binary unbuffered
 
 # red_green_blink()
 while(True):
-    # red_run_backward()
+     #red_run_backward()
     # red_run_forward()
     # red_green_run()
-    # pulse_red()
+    pulse_red()
     # pulse_wave()
     # randomLED()
-    # red_add_forward()
-    # red_add_backward()
-    half_n_half()
+    #red_add_forward()
+    #red_add_backward()
+    #half_n_half()
     # off()
     
 # Close opened file

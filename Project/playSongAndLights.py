@@ -1,4 +1,9 @@
 #!/usr/bin/env python3
+#Authors: Emily Dougherty and Ryan Taylor
+#This program uses a Blynk app to control a string of nano LEDs and play a christmas song
+#once thir corresponding button is pressed. The song/lights will stop if the Blynk 'stop button'
+#is pressed. The setup.sh files must be sourced before running this program.
+
 import blynklib
 import blynktimer
 import sys
@@ -33,56 +38,56 @@ def song1(pin, value):
     global song
     global threadCheck
     if(threadCheck == False):
+        print("starting All I Want For Christmas")
         threadCheck = True
         song = "AllIWantForChristmas.mp3"
         songThread = threading.Thread(target = helperFunction1)
         songThread.start()
-        print("after thread started song 1")
     else:
-        print("already playing a thing!")
+        print("already playing a song!")
 
 @blynk.handle_event('write V2')
 def song2(pin, value):
     global song
     global threadCheck
     if(threadCheck == False):
+        print("starting Merry Christmas, Happy Holidays")
         threadCheck = True
         song = "NSYNC.mp3"
         songThread = threading.Thread(target = helperFunction2)
         songThread.start()
-        print("after thread started song 2")
+    else:
+        print("already playing a song!")
     
 @blynk.handle_event('write V3')
 def song3(pin, value):
     global song
     global threadCheck
     if(threadCheck==False):
+        print("starting Sleigh Ride")
         threadCheck = True
         song = "SleighRide.mp3"
         songThread = threading.Thread(target = helperFunction3)
         songThread.start()
-        print("after thread started song 3")
     else:
-        print("already playing a thing!")
+        print("already playing a song!")
     
 @blynk.handle_event('write V4')
 def song4(pin, value):
     global song
     global threadCheck
     if(threadCheck==False):
+        print("starting Carol of the Bells")
         threadCheck = True
         song = "CarolOfTheBells.mp3"
         songThread = threading.Thread(target = helperFunction4)
         songThread.start()
-        print("after thread started song 4")
     else:
-        print("already playing a thing!")
+        print("already playing a song!")
     
 @blynk.handle_event('write V1')
 def stop(pin, value):
     global off
-    #threadCheck = False
-    print("in the STOP")
     off = 1
     
 #All I want for christmas
@@ -91,7 +96,6 @@ def helperFunction1():
     global song
     global threadCheck
     player = subprocess.Popen(["mplayer", "-quiet", song], stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-    print(off)
     time.sleep(4)
     while(off == 0):
         red_green_blink()
@@ -114,7 +118,6 @@ def helperFunction1():
     off = 0
     Lightsoff()
     threadCheck = False
-    print("everything DONE")
     
   
  #NSYNC   
@@ -123,7 +126,6 @@ def helperFunction2():
     global song
     global threadCheck
     player = subprocess.Popen(["mplayer", "-quiet", song], stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-    print(off)
     time.sleep(4)
     while(off == 0):
         half_n_half()
@@ -146,7 +148,6 @@ def helperFunction2():
     off = 0
     Lightsoff()
     threadCheck = False
-    print("everything DONE")
    
  #Sliegh ride   
 def helperFunction3():
@@ -154,7 +155,6 @@ def helperFunction3():
     global song
     global threadCheck
     player = subprocess.Popen(["mplayer", "-quiet", song], stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-    print(off)
     time.sleep(4)
     while(off == 0):
         red_green_blink()
@@ -171,7 +171,7 @@ def helperFunction3():
     off = 0
     Lightsoff()
     threadCheck = False
-    print("everything DONE")
+
     
 #Carol of the bells    
 def helperFunction4():
@@ -179,7 +179,6 @@ def helperFunction4():
     global song
     global threadCheck
     player = subprocess.Popen(["mplayer", "-quiet", song], stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-    print(off)
     time.sleep(4)
     while(off == 0):
         red_green_blink()
@@ -200,7 +199,6 @@ def helperFunction4():
     off = 0
     Lightsoff()
     threadCheck = False
-    print("everything DONE")
     
 #The Light Animations:
 #red_green_blink()
